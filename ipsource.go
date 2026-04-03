@@ -404,7 +404,7 @@ func ipnetToPrefix(ipNet *net.IPNet) netip.Prefix {
 		return netip.Prefix{}
 	}
 	prefixSize, _ := ipNet.Mask.Size()
-	return netip.PrefixFrom(addr, prefixSize)
+	return netip.PrefixFrom(addr.Unmap(), prefixSize).Masked()
 }
 
 // Interface guards
